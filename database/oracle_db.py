@@ -20,22 +20,50 @@
 #     except oracledb.Error as e:
 #         print(f"❌ Connection Error: {e}")
 #         return None
+
+
+
+
+
+
+# import os
+# import oracledb
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+# def get_connection():
+#     """Establishes and returns an Oracle database connection."""
+#     return oracledb.connect(
+#         user=os.getenv("DB_USER"),
+#         password=os.getenv("DB_PASSWORD"),
+#         dsn=os.getenv("DB_DSN"),
+#         config_dir=os.getenv("WALLET_DIR"),
+#         wallet_location=os.getenv("WALLET_DIR"),
+#         wallet_password=os.getenv("WALLET_PASSWORD")
+#     )
+
 import os
 import oracledb
-from dotenv import load_dotenv
-
-load_dotenv()
 
 def get_connection():
-    """Establishes and returns an Oracle database connection."""
     return oracledb.connect(
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
-        dsn=os.getenv("DB_DSN"),
-        config_dir=os.getenv("WALLET_DIR"),
-        wallet_location=os.getenv("WALLET_DIR"),
-        wallet_password=os.getenv("WALLET_PASSWORD")
+        dsn=os.getenv("DB_DSN")
     )
+
+# import os
+# import oracledb
+
+# def get_connection():
+#     return oracledb.connect(
+#         user=os.getenv("DB_USER"),
+#         password=os.getenv("DB_PASSWORD"),
+#         dsn=os.getenv("DB_DSN"),  # e.g., "myclouddb_high" or full TNS string
+#         wallet_location=os.getenv("WALLET_LOCATION"),
+#         wallet_password=os.getenv("WALLET_PASSWORD")
+#     )
 
 
 
