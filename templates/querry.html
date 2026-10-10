@@ -1,0 +1,240 @@
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Query - AI-Based Study Assistant</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #dbeafe, #c7d2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4f46e5;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            height: 100px;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(to right, #4f46e5, #6366f1);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #4338ca, #4f46e5);
+        }
+
+        .response {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            max-height: 250px;
+            overflow-y: auto;
+            border-left: 5px solid #4f46e5;
+        }
+
+        .logout-btn {
+            display: block;
+            text-align: center;
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #ef4444;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>💬 AI-Based Study Assistant</h2>
+    <p style="text-align:center; color:gray;">Connected: <b>{{ session['user_name'] }}</b></p>
+
+    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Query - AI-Based Study Assistant</title>
+
+    <!-- Marked.js for parsing Markdown into formatted HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #dbeafe, #c7d2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4f46e5;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            height: 100px;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(to right, #4f46e5, #6366f1);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #4338ca, #4f46e5);
+        }
+
+        
+        .response {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    max-height: 350px;
+    overflow-y: auto;
+    border-left: 5px solid #4f46e5;
+    /* REMOVED white-space: pre-wrap; to let marked.js handle spacing cleanly */
+}
+        
+
+        .response ul, .response ol {
+            padding-left: 20px;
+            margin: 5px 0;
+        }
+
+        .response p {
+            margin: 5px 0;
+        }
+
+        .logout-btn {
+            display: block;
+            text-align: center;
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #ef4444;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>💬 AI-Based Study Assistant</h2>
+    <p style="text-align:center; color:gray;">Connected: <b>{{ session['username'] if session.get('username') else session.get('email') }}</b></p>
+
+    <form action="/ask" method="POST">
+        <textarea name="question" placeholder="Type your question here..." required>{{ question if question else '' }}</textarea>
+        <button type="submit">Get AI Answer</button>
+    </form>
+
+    {% if answer %}
+    <div class="response">
+        <b style="color: #4f46e5;">🤖 Professor's Explanation:</b><br>
+        <div id="formattedAnswer"></div>
+    </div>
+
+    <script>
+        // Parses the raw markdown text into structured HTML elements
+        const rawAnswer = {{ answer | tojson }};
+        document.getElementById('formattedAnswer').innerHTML = marked.parse(rawAnswer);
+    </script>
+    {% endif %}
+
+    <br>
+    <a href="/logout" class="logout-btn">Logout</a>
+    <p style="text-align:center;"><a href="/upload_page" style="color: #4f46e5; font-size: 13px;">Upload different PDF</a></p>
+</div>
+
+</body>
+</html>

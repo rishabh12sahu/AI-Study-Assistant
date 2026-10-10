@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - AI-Based Study Assistant</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #dbeafe, #c7d2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            width: 380px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4f46e5;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: gray;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        input:focus {
+            border-color: #4f46e5;
+            outline: none;
+            box-shadow: 0 0 5px rgba(79,70,229,0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(to right, #4f46e5, #6366f1);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #4338ca, #4f46e5);
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #4f46e5;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🤖 AI-Based Study Assistant</h2>
+    <div class="subtitle">Create your student account</div>
+
+    <!-- The form now sends data to the /signup route in app.py -->
+    <form action="/signup" method="POST">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <!-- Note: confirm password check is usually done in backend or via 'pattern' in HTML -->
+        <input type="password" placeholder="Confirm Password" required>
+        <button type="submit">Create Account</button>
+    </form>
+
+    <!-- Displays error/success messages from Python -->
+    <div class="message" id="message">
+        {% if message %}
+            <p style="color: green;">{{ message }}</p>
+        {% endif %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+
+    <div class="login-link">
+        Already have an account?
+        <!-- Redirects back to the login page (root route) -->
+        <a href="/">Login Here</a>
+    </div>
+</div>
+
+<!-- All JavaScript removed as logic is now handled by Oracle & Python -->
+</body>
+</html>
